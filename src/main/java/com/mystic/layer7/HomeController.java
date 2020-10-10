@@ -1,9 +1,8 @@
 package com.mystic.layer7;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+
 //mvc format
 @Controller
 public class HomeController
@@ -25,11 +24,15 @@ public class HomeController
     {
         return "signup";
     }
-
-    @GetMapping("/profile")
-    public String profilePage()
+    @GetMapping("/login2")
+    public String login2()
     {
-        return "profile";
+        return "login2";
     }
+//    @GetMapping("/profile")
+//    public String profilePage()
+//    {
+//        return "profile";
+//    }
 
 }
