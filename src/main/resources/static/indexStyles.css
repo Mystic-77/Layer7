@@ -1,5 +1,8 @@
 *{
-    selection: green;
+
+}
+::selection{
+    color: chartreuse;
 }
 body{
     background-color: black;
@@ -74,4 +77,7 @@ form{
 
 .btn-submit{
     margin-top: 20px;
+}
+.error{
+    color: #cf1b1b;
 }

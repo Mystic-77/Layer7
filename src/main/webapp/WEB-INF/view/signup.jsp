@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Layer7: SignUp</title>
@@ -16,6 +19,7 @@
     <input type="text" class="fields" name="username" placeholder="Username"><br>
     <input type="text" class="fields" name="firstname" placeholder="First name"><br>
     <input type="text" class="fields" name="lastname" placeholder="Last Name"><br>
+    <input type="text" class="fields" name="email" placeholder="Email id"><br>
     <input type="password" class="fields" name="password" placeholder="Password"><br>
     <input type="password" class="fields" name="password2" placeholder="Confirm Password"><br>
     <input type="submit" class="btn btn-submit" value="Sign Up">

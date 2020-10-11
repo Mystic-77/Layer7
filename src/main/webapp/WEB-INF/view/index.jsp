@@ -1,5 +1,8 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<html>
     <head>
         <title>Layer7</title>
         <link rel="stylesheet" href="indexStyles.css">
@@ -15,7 +18,6 @@
                 <a href="/login" class="btn">Login</a>
                 <a href="/signup" class="btn">Sign Up</a>
             </div>
-
         </header>
 
         <script type="text/javascript" src="particles.js"></script>
