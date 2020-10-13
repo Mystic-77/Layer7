@@ -15,15 +15,16 @@
     <h1 id="hero-text">Layer7</h1>
     <hr>
 </header>
-<form action="/profile" method="post">
+<%--@elvariable id="user" type="com.mystic.layer7.entity.User"--%>
+<form:form action="createAccount" method="post" modelAttribute="user">
     <input type="text" class="fields" name="username" placeholder="Username"><br>
-    <input type="text" class="fields" name="firstname" placeholder="First name"><br>
-    <input type="text" class="fields" name="lastname" placeholder="Last Name"><br>
+    <input type="text" class="fields" name="firstName" placeholder="First name"><br>
+    <input type="text" class="fields" name="lastName" placeholder="Last Name"><br>
     <input type="text" class="fields" name="email" placeholder="Email id"><br>
     <input type="password" class="fields" name="password" placeholder="Password"><br>
     <input type="password" class="fields" name="password2" placeholder="Confirm Password"><br>
     <input type="submit" class="btn btn-submit" value="Sign Up">
-</form>
+</form:form>
 <script type="text/javascript" src="particles.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>

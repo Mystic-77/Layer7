@@ -17,7 +17,7 @@ public class Post
 
     private Vote vote;
     private List<Comment> comments;
-
+    private List<String> tags;
     public Post(){}
 
     public Post(User author, String title, String content, String timestamp)

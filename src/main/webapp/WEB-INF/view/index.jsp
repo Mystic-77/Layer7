@@ -13,7 +13,7 @@
         <header>
             <h1 id="hero-text">Layer7</h1>
             <hr>
-            <div id="description">Layer7 is a simple social webpage that allows small communities to share stuff</div>
+            <div id="description">Layer7 is a simple social website that allows small communities to share stuff</div>
             <div class="buttons">
                 <a href="/login" class="btn">Login</a>
                 <a href="/signup" class="btn">Sign Up</a>

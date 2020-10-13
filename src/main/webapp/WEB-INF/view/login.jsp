@@ -15,11 +15,13 @@
         <h1 id="hero-text">Layer7</h1>
         <hr>
     </header>
-    <form action="/profile" method="post">
+
+    <form:form action="/profile" method="post">
+
         <input type="text" class="fields" name="username" placeholder="Username"><br>
         <input type="password" class="fields" name="password" placeholder="Password"><br>
         <input type="submit" class="btn btn-submit" value="Login">
-    </form>
+    </form:form>
     <script type="text/javascript" src="particles.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>
