@@ -10,19 +10,19 @@ public class Post
     @Id
     private String id;
 
-    private User author;
+    private String user;
     private String title;
     private String content;
     private String timestamp;
 
-    private Vote vote;
-    private List<Comment> comments;
+    private String vote;
+    private List<String> comments;
     private List<String> tags;
     public Post(){}
 
-    public Post(User author, String title, String content, String timestamp)
+    public Post(String user, String title, String content, String timestamp)
     {
-        this.author = author;
+        this.user = user;
         this.title = title;
         this.content = content;
         this.timestamp = timestamp;
@@ -36,16 +36,6 @@ public class Post
     public void setId(String id)
     {
         this.id = id;
-    }
-
-    public User getAuthor()
-    {
-        return author;
-    }
-
-    public void setAuthor(User author)
-    {
-        this.author = author;
     }
 
     public String getTitle()
@@ -78,24 +68,44 @@ public class Post
         this.timestamp = timestamp;
     }
 
-    public Vote getVote()
+    public String getUser()
+    {
+        return user;
+    }
+
+    public void setUser(String user)
+    {
+        this.user = user;
+    }
+
+    public String getVote()
     {
         return vote;
     }
 
-    public void setVote(Vote vote)
+    public void setVote(String vote)
     {
         this.vote = vote;
     }
 
-    public List<Comment> getComments()
+    public List<String> getComments()
     {
         return comments;
     }
 
-    public void setComments(List<Comment> comments)
+    public void setComments(List<String> comments)
     {
         this.comments = comments;
+    }
+
+    public List<String> getTags()
+    {
+        return tags;
+    }
+
+    public void setTags(List<String> tags)
+    {
+        this.tags = tags;
     }
 
     @Override
@@ -103,12 +113,13 @@ public class Post
     {
         return "Post{" +
                 "id='" + id + '\'' +
-                ", author=" + author +
+                ", user='" + user + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", timestamp='" + timestamp + '\'' +
-                ", vote=" + vote +
+                ", vote='" + vote + '\'' +
                 ", comments=" + comments +
+                ", tags=" + tags +
                 '}';
     }
 }

@@ -62,8 +62,8 @@ public class HomeController
             {
                 System.out.println("condition is evaluated to be true");
                 System.out.println("retrieving posts");
-
-                return "helloworld";
+                model.addAttribute(user);
+                return "profile";
             }
             else
             {

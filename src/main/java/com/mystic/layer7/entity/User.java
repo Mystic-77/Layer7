@@ -15,7 +15,7 @@ public class User
     private String lastName;
     private String email;
     private String password;
-    private List<Post> posts;
+    private List<String> posts;
     private List<String> roles;
 
     public User(){}
@@ -89,16 +89,6 @@ public class User
         this.password = password;
     }
 
-    public List<Post> getPosts()
-    {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts)
-    {
-        this.posts = posts;
-    }
-
     public List<String> getRoles()
     {
         return roles;
@@ -107,6 +97,16 @@ public class User
     public void setRoles(List<String> roles)
     {
         this.roles = roles;
+    }
+
+    public List<String> getPosts()
+    {
+        return posts;
+    }
+
+    public void setPosts(List<String> posts)
+    {
+        this.posts = posts;
     }
 
     @Override

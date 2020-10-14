@@ -7,14 +7,14 @@ public class Comment
     @Id
     private String id;
 
-    private User user;
+    private String user;
     private String timestamp;
     private String commentContent;
-    private Vote vote;
+    private String vote;
 
     Comment(){}
 
-    public Comment(User user, String timestamp, String commentContent)
+    public Comment(String user, String timestamp, String commentContent)
     {
         this.user = user;
         this.timestamp = timestamp;
@@ -31,12 +31,12 @@ public class Comment
         this.id = id;
     }
 
-    public User getUser()
+    public String getUser()
     {
         return user;
     }
 
-    public void setUser(User user)
+    public void setUser(String user)
     {
         this.user = user;
     }
@@ -61,12 +61,12 @@ public class Comment
         this.commentContent = commentContent;
     }
 
-    public Vote getVote()
+    public String getVote()
     {
         return vote;
     }
 
-    public void setVote(Vote vote)
+    public void setVote(String vote)
     {
         this.vote = vote;
     }

@@ -17,7 +17,7 @@ body{
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     margin: 0 auto 50px auto;
-    top: 250px;
+    /*top: 250px;*/
     text-align: center;
 }
 #description{
@@ -80,4 +80,69 @@ form{
 }
 .error{
     color: #cf1b1b;
+}
+
+/*-------------------------------------------------*/
+/*-------------------NAVBAR------------------------*/
+/*-------------------------------------------------*/
+
+#navlinks
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#navlinks li
+{
+    display: inline;
+}
+
+.links
+{
+    display: block;
+    padding: 10px;
+    color: white;
+    /*border: solid 1px white;*/
+    float: left;
+    margin: 0px 5px 10px 5px;
+    text-decoration: none;
+    font-size: 20px;
+}
+.links:hover{
+    /*color: black;*/
+    /*background-color: white;*/
+    border-bottom: solid 1px white;
+    transition: border-bottom-color 2s;
+
+}
+.navbar
+{
+    height: 50px;
+    display: block;
+    margin: 0 0 20px 0;
+}
+
+hr{
+    border: 1px solid white;
+}
+
+.user-details{
+    font-size: 20px;
+    width: 50%;
+    margin: 50px auto 50px auto;
+    text-align: center;
+}
+.labels{
+    display: block;
+    width: 40%;
+    float: left;
+    text-align: left;
+    /*margin: 5px 50px 5px 5px;*/
+}
+.info{
+    display: block;
+    width: 60%;
+    text-align: right;
+    float: right;
 }

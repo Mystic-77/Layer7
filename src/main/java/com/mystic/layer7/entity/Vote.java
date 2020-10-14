@@ -9,10 +9,9 @@ public class Vote
     @Id
     String id;
 
-    private List<User> upvotes;
-    private List<User> downvotes;
+    private List<String> upvotes; //strings of user ids
+    private List<String> downvotes; //strings of user ids
     private int votes;
-    private String secondaryKey;
 
     public Vote()
     {
@@ -29,25 +28,7 @@ public class Vote
         this.id = id;
     }
 
-    public List<User> getUpvotes()
-    {
-        return upvotes;
-    }
 
-    public void setUpvotes(List<User> upvotes)
-    {
-        this.upvotes = upvotes;
-    }
-
-    public List<User> getDownvotes()
-    {
-        return downvotes;
-    }
-
-    public void setDownvotes(List<User> downvotes)
-    {
-        this.downvotes = downvotes;
-    }
 
     public int getVotes()
     {
@@ -59,14 +40,24 @@ public class Vote
         this.votes = votes;
     }
 
-    public String getSecondaryKey()
+    public List<String> getUpvotes()
     {
-        return secondaryKey;
+        return upvotes;
     }
 
-    public void setSecondaryKey(String secondaryKey)
+    public void setUpvotes(List<String> upvotes)
     {
-        this.secondaryKey = secondaryKey;
+        this.upvotes = upvotes;
+    }
+
+    public List<String> getDownvotes()
+    {
+        return downvotes;
+    }
+
+    public void setDownvotes(List<String> downvotes)
+    {
+        this.downvotes = downvotes;
     }
 
     @Override
@@ -77,7 +68,6 @@ public class Vote
                 ", upvotes=" + upvotes +
                 ", downvotes=" + downvotes +
                 ", votes=" + votes +
-                ", secondaryKey='" + secondaryKey + '\'' +
                 '}';
     }
 }
