@@ -22,7 +22,17 @@
     </nav>
     <h1 id="hero-text">Forums</h1>
     <hr>
-
+    <jsp:useBean id="posts" scope="request" type="java.util.List"/>
+    <c:forEach var="post" items="${posts}">
+        <div class="post">
+            <div class="post-header">
+                <span>${post.title}</span><span>${post.timestamp}</span><br>
+                <span>
+                    ${post.content}
+                </span>
+            </div>
+        </div>
+    </c:forEach>
     <script type="text/javascript" src="particles.js"></script>
     <script type="text/javascript" src="app.js"></script>
 </body>

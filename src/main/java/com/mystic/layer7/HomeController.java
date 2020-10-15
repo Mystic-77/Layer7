@@ -1,6 +1,6 @@
 package com.mystic.layer7;
 
-import com.mystic.layer7.entity.User;
+import com.mystic.layer7.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 //mvc format
 @Controller
@@ -31,26 +34,35 @@ public class HomeController
     }
 
     @GetMapping("/forums")
-    public String forumsPage()
+    public String forumsPage(Model model)
     {
+        List<Post> posts = dbService.getPostRepository().findAll();
+        System.out.println(posts);
+        model.addAttribute("posts",posts);
         return "forums";
     }
 
     @GetMapping("/links")
-    public String linksPage()
+    public String linksPage(Model model)
     {
+        List<Link> links = dbService.getLinkRepository().findAll();
+        model.addAttribute("links", links);
         return "links";
     }
 
     @GetMapping("/playlists")
-    public String playlistsPage()
+    public String playlistsPage(Model model)
     {
+        List<Playlist> playlists = dbService.getPlaylistRepository().findAll();
+        model.addAttribute("playlists",playlists);
         return "playlists";
     }
 
     @GetMapping("/users")
-    public String usersPage()
+    public String usersPage(Model model)
     {
+        List<User> users = dbService.getUserRepository().findAll();
+        model.addAttribute("users",users);
         return "users";
     }
 
@@ -133,5 +145,42 @@ public class HomeController
                               Model model)
     {
         return "new-playlist-form";
+    }
+
+    @PostMapping("/addPost")
+    public String addNewPost(@ModelAttribute("post") Post post,
+                             @CookieValue(value = "userid") String userid,
+                             Model model)
+    {
+        String s = post.getTags().get(0);
+        post.setTags(Arrays.asList(s.split(" ")));
+        Vote vote = new Vote();
+        dbService.getVoteRepository().save(vote);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        post.setTimestamp(timestamp.toString());
+
+        List<String> arr = new ArrayList<>();
+        post.setComments(arr);
+        post.setVote(vote.getId());
+        post.setUser(userid);
+        dbService.getPostRepository().save(post);
+        System.out.println(post);
+        return "forums";
+    }
+
+    @PostMapping("/addLink")
+    public String addNewLink(@ModelAttribute("link") Link link,
+                             Model model)
+    {
+        dbService.getLinkRepository().save(link);
+        return "links";
+    }
+
+    @PostMapping("/addPlaylist")
+    public String addNewPlaylist(@ModelAttribute("playlist") Playlist playlist,
+                                 Model model)
+    {
+        dbService.getPlaylistRepository().save(playlist);
+        return "playlists";
     }
 }
