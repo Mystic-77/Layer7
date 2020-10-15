@@ -17,6 +17,7 @@
             <li><a class="links" href="/playlists">Playlists</a></li>
             <li><a class="links" href="/forums">Forums</a></li>
             <li><a class="links" href="/users">Users</a></li>
+            <li><a class="links active-nav" href="">Profile</a></li>
         </ul>
     </nav>
     <h1 id="hero-text">Profile</h1>
@@ -26,8 +27,30 @@
         <span class="labels">First Name : </span><span class="info">${user.firstName}</span><br>
         <span class="labels">Last Name  : </span><span class="info">${user.lastName}</span><br>
         <span class="labels">Email Id   : </span><span class="info">${user.email}</span><br>
-        <span class="labels">Roles      : </span><span class="info">${user.roles}</span><br>
+        <span class="labels">Role      : </span><span class="info">${user.role}</span><br>
     </div>
+<%--    //add a feature to change details/pswd later on--%>
+    <div class="buttons">
+        <a href="/editProfile" class="btn-profile">Edit Details</a>
+        <a href="/changePassword" class="btn-profile">Change Password</a>
+    </div>
+
+    <h1 id="myposts">My Posts</h1>
+    <hr>
+    <c:if test="${user.posts.size() == 0}">
+        <div class="message">
+            You haven't written any posts
+        </div>
+        <div class="message">
+            <a href="/addPost" class="btn" id="btn-add-post">Write a post</a>
+        </div>
+
+    </c:if>
+    <c:if test="${user.posts.size() > 0}">
+        <c:forEach var="post" items="user.posts">
+            <div class="post"></div>
+        </c:forEach>
+    </c:if>
 <script type="text/javascript" src="particles.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>

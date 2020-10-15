@@ -9,4 +9,5 @@ import org.springframework.data.rest.webmvc.RepositoryRestController;
 public interface UserRepository extends MongoRepository<User, String>
 {
     public User getUserByUsername(@Param("username") String username);
+    public User getUserById(@Param("Id") String id);
 }

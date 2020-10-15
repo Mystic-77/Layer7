@@ -1,5 +1,5 @@
 *{
-
+font-family: 'Piazzolla', serif;
 }
 ::selection{
     color: chartreuse;
@@ -14,10 +14,7 @@ body{
 #hero-text{
 
     font-size: 100px;
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
     margin: 0 auto 50px auto;
-    /*top: 250px;*/
     text-align: center;
 }
 #description{
@@ -65,6 +62,7 @@ body{
     font-size: 30px;
     background-color: transparent;
     /*text-align: center;*/
+    font-family: 'Piazzolla', serif;
     padding: 7px;
     border: 2px solid white;
     text-decoration: none;
@@ -132,6 +130,8 @@ hr{
     width: 50%;
     margin: 50px auto 50px auto;
     text-align: center;
+    border: 3px solid white;
+    padding: 10px;
 }
 .labels{
     display: block;
@@ -145,4 +145,62 @@ hr{
     width: 60%;
     text-align: right;
     float: right;
+}
+
+/*----------------------------------------------------------*/
+/*-------------------PROFILE STUFF--------------------------*/
+/*----------------------------------------------------------*/
+
+.btn-profile{
+    color: white;
+    font-size: 20px;
+    background-color: transparent;
+    text-align: center;
+    padding: 7px;
+    border: 2px solid white;
+    text-decoration: none;
+    margin-left: 25px;
+    margin-right: 25px;
+    border-radius: 5px;
+}
+.btn-profile:hover{
+    background-color: #ffffff;
+    color: black;
+}
+
+.message{
+    font-size: 30px;
+    color: rgba(171, 171, 171, 0.66);
+    padding: 50px;
+    margin: 100px auto 50px auto;
+    text-align: center;
+    display: block;
+}
+#myposts
+{
+    font-size: 100px;
+    margin: 150px auto 50px auto;
+    text-align: center;
+}
+#btn-add-post
+{
+    margin: 100px auto 100px auto;
+}
+.active-nav{
+    border-bottom: 1px solid white;
+}
+
+/*---------------------------------------------------*/
+/*---------------------FORMS-------------------------*/
+/*---------------------------------------------------*/
+.form-fields{
+    color: white;
+    margin: 12px auto 12px auto;
+    font-size: 20px;
+    font-family: 'Piazzolla', serif;
+    background-color: transparent;
+    width: 90%;
+    padding: 7px;
+    border: 2px solid white;
+    text-decoration: none;
 }

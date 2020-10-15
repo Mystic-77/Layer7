@@ -3,6 +3,7 @@ package com.mystic.layer7.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User
@@ -16,7 +17,7 @@ public class User
     private String email;
     private String password;
     private List<String> posts;
-    private List<String> roles;
+    private String role;
 
     public User(){}
 
@@ -27,6 +28,8 @@ public class User
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.role = "USER"; //default role
+        this.posts = new ArrayList<String>();
     }
 
     public String getId()
@@ -89,14 +92,14 @@ public class User
         this.password = password;
     }
 
-    public List<String> getRoles()
+    public String getRole()
     {
-        return roles;
+        return role;
     }
 
-    public void setRoles(List<String> roles)
+    public void setRole(String role)
     {
-        this.roles = roles;
+        this.role = role;
     }
 
     public List<String> getPosts()
@@ -120,7 +123,7 @@ public class User
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", posts=" + posts +
-                ", roles=" + roles +
+                ", role=" + role +
                 '}';
     }
 }
