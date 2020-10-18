@@ -20,6 +20,7 @@
             <li><a class="links" href="/users">Users</a></li>
             <li><a class="links active-nav" href="/profile">Profile</a></li>
         </ul>
+        <span class="nav-add-content"><a href="/logout" class="links" id="nav-add">Logout</a></span>
     </nav>
     <h1 id="hero-text">Profile</h1>
     <hr>
@@ -32,8 +33,8 @@
     </div>
 <%--    //add a feature to change details/pswd later on--%>
     <div class="buttons">
-        <a href="/editProfile" class="btn-profile">Edit Details</a>
-        <a href="/changePassword" class="btn-profile">Change Password</a>
+<%--        <a href="/editProfile" class="btn-profile">Edit Details</a>--%>
+<%--        <a href="/changePassword" class="btn-profile">Change Password</a>--%>
     </div>
 
     <h1 id="myposts">My Posts</h1>

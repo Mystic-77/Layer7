@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.net.http.HttpRequest;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -140,6 +141,11 @@ public class HomeController
         return "redirect:/forums";
     }
 
+    @GetMapping("/logout")
+    public String logout()
+    {
+        return "index";
+    }
     //POST MAPPINGS
     @PostMapping("/createAccount")
     public String newAccount(@ModelAttribute("user") User user)

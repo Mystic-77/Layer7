@@ -2,6 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%
+    Cookie[] cookies = request.getCookies();
+    for(Cookie cookie: cookies)
+    {
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
+    }
+    session.invalidate();
+%>
 <html>
     <head>
         <title>Layer7</title>
