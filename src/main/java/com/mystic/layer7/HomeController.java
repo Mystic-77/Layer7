@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -22,6 +23,11 @@ public class HomeController
     private DatabaseService dbService;
 
     //GET MAPPINGS
+    @GetMapping("/index")
+    public String indexPage()
+    {
+        return "index";
+    }
     @GetMapping("/login")
     public String loginPage()
     {
@@ -38,7 +44,7 @@ public class HomeController
     public String forumsPage(Model model)
     {
         List<Post> posts = dbService.getPostRepository().findAll();
-        System.out.println(posts);
+        Collections.reverse(posts);
         model.addAttribute("posts",posts);
         return "forums";
     }
@@ -103,14 +109,35 @@ public class HomeController
     public String postPage(@PathVariable String postId,
                            Model model)
     {
-        System.out.println("works");
         Post post = dbService.getPostRepository().getPostById(postId);
         String username = dbService.getUserRepository().getUserById(post.getUser()).getUsername();
-        System.out.println(post);
-        System.out.println(username);
+        List<Comment> comments = dbService.getCommentRepository().getCommentByPost(postId);
+
         model.addAttribute("username",username);
         model.addAttribute("post",post);
+        model.addAttribute("comments",comments);
+
         return "post";
+    }
+
+    @GetMapping("/deletePost/{postId}")
+    public String deletePost(@PathVariable String postId)
+    {
+        Post post = dbService.getPostRepository().getPostById(postId);
+        User user = dbService.getUserRepository().getUserById(post.getUser());
+
+        //remove post id from user db
+        List<String> userPosts = user.getPosts();
+        userPosts.remove(postId);
+        user.setPosts(userPosts);
+
+        //delete all comments of the post from comment repository
+        dbService.getCommentRepository().deleteCommentsByPost(postId);
+
+        //delete the post
+        dbService.getPostRepository().deletePostById(postId);
+
+        return "redirect:/forums";
     }
 
     //POST MAPPINGS
@@ -121,15 +148,15 @@ public class HomeController
         {
             return "error";
         }
-        System.out.println(user);
+
         String password = user.getPassword();
-        System.out.println(password);
+
         user.setPassword(new PasswordEncryptor().encode(user.getPassword()));
         user.setRole("USER");
         user.setPosts(new ArrayList<String>());
-        System.out.println(user);
+
         dbService.getUserRepository().save(user);
-        return "redirect:index";
+        return "redirect:/index";
     }
 
 
@@ -147,9 +174,7 @@ public class HomeController
             System.out.println(hashedPassword);
             if (passwordEncryptor.comparePasswords(hashedPassword, user.getPassword()))
             {
-//                List<Post> posts = dbService.getPostRepository().getPostsByUser(user.getId());
                 model.addAttribute(user);
-//                model.addAttribute(posts);
                 Cookie cookie = new Cookie("userid", user.getId());
                 response.addCookie(cookie);
                 return "redirect:profile";
@@ -194,19 +219,32 @@ public class HomeController
     }
 
     @PostMapping("/addLink")
-    public String addNewLink(@ModelAttribute("link") Link link,
-                             Model model)
+    public String addNewLink(@ModelAttribute("link") Link link)
     {
         dbService.getLinkRepository().save(link);
         return "redirect:links";
     }
 
     @PostMapping("/addPlaylist")
-    public String addNewPlaylist(@ModelAttribute("playlist") Playlist playlist,
-                                 Model model)
+    public String addNewPlaylist(@ModelAttribute("playlist") Playlist playlist)
     {
         dbService.getPlaylistRepository().save(playlist);
         return "redirect:playlists";
+    }
+
+    @PostMapping("addComment/{postId}")
+    public String makeComment(@PathVariable("postId") String postId,
+                              @ModelAttribute("comment") Comment comment,
+                              @CookieValue(value = "userid") String userId)
+    {
+        if(comment.getCommentContent().trim() == "")
+        {
+            return "redirect:/forums/" + postId;
+        }
+        comment.setPost(postId);
+        comment.setUser(dbService.getUserRepository().getUserById(userId).getUsername());
+        dbService.getCommentRepository().save(comment);
+        return "redirect:/forums/" + postId;
     }
 }
     

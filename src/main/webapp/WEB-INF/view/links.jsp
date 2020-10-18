@@ -19,10 +19,23 @@
         <li><a class="links" href="/users">Users</a></li>
         <li><a class="links" href="/profile">Profile</a></li>
     </ul>
+    <span class="nav-add-content"><a href="/addLink" class="links" id="nav-add">Add Link</a></span>
 </nav>
 <h1 id="hero-text">Links</h1>
 <hr>
-
+<div class="links-container">
+    <c:forEach var="link" items="${links}">
+        <div class="link">
+            <div class="link-name">
+                ${link.groupName}
+            </div>
+            <div class="link-desc">
+                ${link.description}
+            </div>
+            <a class="link-btn" href="${link.link}" target="_blank">Open Link</a>
+        </div>
+    </c:forEach>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>

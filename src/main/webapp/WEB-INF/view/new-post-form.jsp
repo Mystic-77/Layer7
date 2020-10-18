@@ -23,7 +23,7 @@
 <h1 id="hero-text">New Post</h1>
 <hr>
 <%--@elvariable id="post" type="com.mystic.layer7.entity.Post"--%>
-<form:form action="/addPost" method="post" modelAttribute="post">
+<form:form class="input-form" action="/addPost" method="post" modelAttribute="post">
     <input type="text" class="form-fields" name="title" placeholder="Title"><br>
     <input type="text" class="form-fields" name="Tags" placeholder="Enter tags seperated by space"><br>
     <textarea name="content" class="form-fields" placeholder="Content..." rows="6"></textarea><br>

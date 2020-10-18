@@ -16,7 +16,7 @@
         <hr>
     </header>
 
-    <form:form action="/auth" method="post">
+    <form:form class="input-form" action="/auth" method="post">
 
         <input type="text" class="fields" name="username" placeholder="Username"><br>
         <input type="password" class="fields" name="password" placeholder="Password"><br>

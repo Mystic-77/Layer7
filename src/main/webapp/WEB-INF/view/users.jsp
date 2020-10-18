@@ -22,7 +22,22 @@
 </nav>
 <h1 id="hero-text">Users</h1>
 <hr>
-
+<div class="user-container">
+    <table class="user-table">
+        <thead>
+            <td class="user-th">Username</td>
+            <td class="user-th">Role</td>
+        </thead>
+        <tbody>
+            <c:forEach var="user" items="${users}">
+                <tr class="user-row">
+                    <td class="user-name">${user.username}</td>
+                    <td class="user-role">${user.role}</td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>

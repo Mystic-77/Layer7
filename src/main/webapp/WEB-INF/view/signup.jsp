@@ -16,7 +16,7 @@
     <hr>
 </header>
 <%--@elvariable id="user" type="com.mystic.layer7.entity.User"--%>
-<form:form action="createAccount" method="post" modelAttribute="user">
+<form:form class="input-form" action="createAccount" method="post" modelAttribute="user">
     <input type="text" class="fields" name="username" placeholder="Username"><br>
     <input type="text" class="fields" name="firstName" placeholder="First name"><br>
     <input type="text" class="fields" name="lastName" placeholder="Last Name"><br>

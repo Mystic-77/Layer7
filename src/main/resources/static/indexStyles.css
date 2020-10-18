@@ -75,7 +75,7 @@ hr{
     border: 2px solid white;
     text-decoration: none;
 }
-form{
+.input-form{
     margin: 50px auto 0 auto;
     width: 720px;
     text-align: center;
@@ -103,7 +103,14 @@ form{
 {
     display: inline;
 }
-
+#nav-add{
+    border: 1px solid white;
+}
+#nav-add:hover
+{
+    background-color: white;
+    color: black;
+}
 .links
 {
     display: block;
@@ -129,6 +136,9 @@ form{
     margin: 0 0 20px 0;
 }
 
+.nav-add-content{
+    float: right;
+}
 
 .user-details{
     font-size: 20px;
@@ -221,13 +231,11 @@ form{
     width: 60%;
     color: white;
     margin: 50px auto 12px auto;
-
     font-size: 20px;
     font-family: 'Piazzolla', serif;
     background-color: transparent;
     padding: 7px;
     text-decoration: none;
-    max-height: 25%;
 }
 .post-title{
     text-decoration: none;
@@ -239,4 +247,208 @@ form{
 }
 .post-content{
     margin: 5px auto 5px auto;
+}
+.author{
+    font-style: italic;
+    font-size:15px;
+    color: aqua;
+}
+.deletePost{
+    float: right;
+}
+.del-link{
+    font-size: 15px;
+    background-color: #cf1b1b;
+
+    /*font-style: italic;*/
+    color: white;
+    text-decoration: none;
+    /*border: 1px solid white;*/
+}
+.del-link:hover{
+    border: 1px solid white;
+}
+
+.tags{
+    background-color: transparent;
+    color: yellow;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 3px;
+    font-size: 15px;
+    margin: 0px auto 0px 5px;
+}
+.tag-container{
+    display: block;
+    margin-top: 15px;
+}
+.post-details{
+    display: block;
+    margin-top: 15px;
+}
+
+/*--------------------------------------------------*/
+/*------------------COMMENTS------------------------*/
+/*--------------------------------------------------*/
+
+.comments
+{
+    border: 3px solid white;
+    width: 60%;
+    color: white;
+    margin: 10px auto 12px auto;
+    font-size: 20px;
+    font-family: 'Piazzolla', serif;
+    background-color: transparent;
+    padding: 7px;
+    text-decoration: none;
+}
+
+
+.comment-field {
+    border: 3px solid white;
+    width: 61%;
+    color: white;
+    margin: 50px 19% 12px 19%;
+    font-size: 15px;
+    font-family: 'Piazzolla', serif;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+textarea{
+    resize: none;
+}
+
+#comment-send-btn{
+    align-self: center;
+    margin: 10px 48% 30px 48%;
+    background-color: transparent;
+    font-size: 15px;
+    color: white;
+    border: 1px solid white;
+}
+#comment-send-btn:hover{
+    background-color: white;
+    color: black;
+}
+
+.comment-container{
+    margin: 5px auto 30px auto;
+    border: 1px solid white;
+    padding: 5px;
+}
+.comment-info{
+    font-size: 20px;
+    color: aqua;
+    font-style: italic;
+}
+.comment-content{
+    font-size: 15px;
+    color: white;
+}
+
+/*---------------------------------------------*/
+/*------------------LINKS----------------------*/
+/*---------------------------------------------*/
+
+.links-container{
+    width: 60%;
+    background-color: transparent;
+    font-size: 30px;
+    padding: 10px;
+    margin: 150px auto 50px auto;
+}
+.link{
+    border: 3px solid white;
+    padding: 10px;
+    margin-top: 20px;
+}
+.link-name{
+    color: aqua;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.link-desc
+{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.link-btn{
+    border: 1px solid white;
+    text-decoration: none;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 7px;
+    color: white;
+}
+.link-btn:hover{
+    background-color: white;
+    color: black;
+}
+
+
+/*-------------------------------------------*/
+/*----------------PLAYLISTS------------------*/
+/*-------------------------------------------*/
+
+.playlist-container{
+    width: 60%;
+    background-color: transparent;
+    font-size: 30px;
+    padding: 10px;
+    margin: 150px auto 50px auto;
+}
+
+.playlist{
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.playlist-frame{
+    width: 100%;
+    margin: 0px auto 20px auto;
+}
+.playlist-genre{
+    margin-bottom: 50px;
+}
+
+/*--------------------------------------------*/
+/*---------------USERS------------------------*/
+/*--------------------------------------------*/
+
+.user-container{
+    width: 60%;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 10px;
+    margin: 150px auto 50px auto;
+}
+
+.user-table{
+    padding: 10px;
+    border: 3px solid white;
+    width: 100%;
+}
+
+.user-row{
+    margin: 5px auto 5px auto;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+.user-name{
+    text-align: center;
+}
+.user-role{
+    text-align: center;
+}
+th{
+    font-weight: bold;
+}
+.user-th{
+    color: aqua;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 30px;
 }

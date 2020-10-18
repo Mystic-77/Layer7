@@ -8,6 +8,7 @@ public class Comment
     private String id;
 
     private String user;
+    private String post;
     private String timestamp;
     private String commentContent;
     private String vote;
@@ -71,15 +72,26 @@ public class Comment
         this.vote = vote;
     }
 
+    public String getPost()
+    {
+        return post;
+    }
+
+    public void setPost(String post)
+    {
+        this.post = post;
+    }
+
     @Override
     public String toString()
     {
         return "Comment{" +
                 "id='" + id + '\'' +
-                ", user=" + user +
+                ", user='" + user + '\'' +
+                ", post='" + post + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", commentContent='" + commentContent + '\'' +
-                ", vote=" + vote +
+                ", vote='" + vote + '\'' +
                 '}';
     }
 }

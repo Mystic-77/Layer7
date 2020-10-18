@@ -24,7 +24,7 @@
 <hr>
 
 <%--@elvariable id="playlist" type="com.mystic.layer7.entity.Playlist"--%>
-<form:form action="/addPlaylist" method="post" modelAttribute="playlist">
+<form:form class="input-form" action="/addPlaylist" method="post" modelAttribute="playlist">
     <input type="text" class="form-fields" name="genre" placeholder="Genre"><br>
     <input type="text" class="form-fields" name="playlistLink" placeholder="Paste link here..."><br>
     <input type="submit" class="btn btn-submit" value="Add PlayList">

@@ -20,6 +20,7 @@
             <li><a class="links" href="/users">Users</a></li>
             <li><a class="links" href="/profile">Profile</a></li>
         </ul>
+        <span class="nav-add-content"><a href="/addPost" class="links" id="nav-add">Add post</a></span>
     </nav>
     <h1 id="hero-text">Forums</h1>
     <hr>
@@ -28,8 +29,6 @@
             <div class="post">
                 <div class="post-header">
                     <a class="post-title" href="/forums/${post.id}">${post.title}</a>
-                        <%--                        <span class="post-title">${post.title}</span>--%>
-                        <%--                        <span class="post-timestamp">${post.timestamp}</span>--%>
                 </div>
                 <div class="post-content">
                         ${fn:substring(post.content,0,300)}

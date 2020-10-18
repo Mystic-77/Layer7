@@ -23,7 +23,7 @@
 <h1 id="hero-text">New Link</h1>
 <hr>
 
-<form:form action="/addLink" method="post" modelAttribute="link">
+<form:form class="input-form" action="/addLink" method="post" modelAttribute="link">
     <input type="text" class="form-fields" name="groupName" placeholder="GroupName"><br>
     <input type="text" class="form-fields" name="link" placeholder="Paste link here..."><br>
     <textarea name="description" class="form-fields" placeholder="Description" rows="6"></textarea><br>

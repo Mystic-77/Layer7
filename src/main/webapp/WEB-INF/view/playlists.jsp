@@ -19,10 +19,20 @@
         <li><a class="links" href="/users">Users</a></li>
         <li><a class="links" href="/profile">Profile</a></li>
     </ul>
+    <span class="nav-add-content"><a href="/addPlaylist" class="links" id="nav-add">Add Playlist</a></span>
 </nav>
 <h1 id="hero-text">Playlists</h1>
 <hr>
-
+<div class="playlist-container">
+    <c:forEach var="playlist" items="${playlists}">
+        <div class="playlist">
+            <div class="playlist-frame">
+                <iframe src="${playlist.playlistLink}" title="Playlist"></iframe>
+            </div>
+            <div class="playlist-genre">${playlist.genre}</div>
+        </div>
+    </c:forEach>
+</div>
 <script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>
