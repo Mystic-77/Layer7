@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Layer7 | Playlists</title>
+    <title>Layer7 | Forums</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/indexStyles.css">
     <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@100&display=swap" rel="stylesheet">
 </head>
@@ -14,13 +14,13 @@
 <nav class="navbar">
     <ul id="navlinks">
         <li><a class="links" href="/links">Links</a></li>
-        <li><a class="links active-nav" href="/playlists">Playlists</a></li>
+        <li><a class="links" href="/playlists">Playlists</a></li>
         <li><a class="links" href="/forums">Forums</a></li>
         <li><a class="links" href="/users">Users</a></li>
         <li><a class="links" href="/profile">Profile</a></li>
     </ul>
 </nav>
-<h1 id="hero-text">Playlists</h1>
+<h1 id="hero-text">Forums</h1>
 <hr>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>

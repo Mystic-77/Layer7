@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Layer7: Login</title>
-    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/indexStyles.css">
     <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,7 +22,7 @@
         <input type="password" class="fields" name="password" placeholder="Password"><br>
         <input type="submit" class="btn btn-submit" value="Login">
     </form:form>
-    <script type="text/javascript" src="particles.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <<script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>
 </html>

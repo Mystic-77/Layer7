@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Layer7 | Forums</title>
-    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/indexStyles.css">
     <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -22,18 +23,23 @@
     </nav>
     <h1 id="hero-text">Forums</h1>
     <hr>
-    <jsp:useBean id="posts" scope="request" type="java.util.List"/>
-    <c:forEach var="post" items="${posts}">
-        <div class="post">
-            <div class="post-header">
-                <span>${post.title}</span><span>${post.timestamp}</span><br>
-                <span>
-                    ${post.content}
-                </span>
+    <div class="post-container">
+        <c:forEach var="post" items="${posts}">
+            <div class="post">
+                <div class="post-header">
+                    <a class="post-title" href="/forums/${post.id}">${post.title}</a>
+                        <%--                        <span class="post-title">${post.title}</span>--%>
+                        <%--                        <span class="post-timestamp">${post.timestamp}</span>--%>
+                </div>
+                <div class="post-content">
+                        ${fn:substring(post.content,0,300)}
+                </div>
+                <div class="post-interactions">
+                </div>
             </div>
-        </div>
-    </c:forEach>
-    <script type="text/javascript" src="particles.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+        </c:forEach>
+    </div>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>
 </html>

@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Profile | ${user.username}</title>
-    <link rel="stylesheet" href="indexStyles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/indexStyles.css">
     <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -17,7 +18,7 @@
             <li><a class="links" href="/playlists">Playlists</a></li>
             <li><a class="links" href="/forums">Forums</a></li>
             <li><a class="links" href="/users">Users</a></li>
-            <li><a class="links active-nav" href="">Profile</a></li>
+            <li><a class="links active-nav" href="/profile">Profile</a></li>
         </ul>
     </nav>
     <h1 id="hero-text">Profile</h1>
@@ -41,17 +42,29 @@
         <div class="message">
             You haven't written any posts
         </div>
-        <div class="message">
-            <a href="/addPost" class="btn" id="btn-add-post">Write a post</a>
-        </div>
-
     </c:if>
     <c:if test="${user.posts.size() > 0}">
-        <c:forEach var="post" items="user.posts">
-            <div class="post"></div>
-        </c:forEach>
+        <div class="post-container">
+            <c:forEach var="post" items="${posts}">
+                <div class="post">
+                    <div class="post-header">
+                        <a class="post-title" href="/forums/${post.id}">${post.title}</a>
+<%--                        <span class="post-title">${post.title}</span>--%>
+<%--                        <span class="post-timestamp">${post.timestamp}</span>--%>
+                    </div>
+                    <div class="post-content">
+                            ${fn:substring(post.content,0,300)}
+                    </div>
+                    <div class="post-interactions">
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </c:if>
-<script type="text/javascript" src="particles.js"></script>
-<script type="text/javascript" src="app.js"></script>
+    <div class="message">
+        <a href="/addPost" class="btn" id="btn-add-post">Write a post</a>
+    </div>
+<script type="text/javascript" src="${pageContext.request.contextPath}/particles.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/app.js"></script>
 </body>
 </html>

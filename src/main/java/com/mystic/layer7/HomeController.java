@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-//mvc format
+
 @Controller
 public class HomeController
 {
@@ -21,6 +21,7 @@ public class HomeController
     @Autowired
     private DatabaseService dbService;
 
+    //GET MAPPINGS
     @GetMapping("/login")
     public String loginPage()
     {
@@ -71,59 +72,10 @@ public class HomeController
                               Model model)
     {
         User user = dbService.getUserRepository().getUserById(userId);
-        model.addAttribute(user);
+        List<Post> posts = dbService.getPostRepository().getPostsByUser(userId);
+        model.addAttribute("user",user);
+        model.addAttribute("posts",posts);
         return "profile";
-    }
-    @PostMapping("/createAccount")
-    public String newAccount(@ModelAttribute("user") User user)
-    {
-        if(user == null)
-        {
-            return "error";
-        }
-        System.out.println(user);
-        String password = user.getPassword();
-        System.out.println(password);
-        user.setPassword(new PasswordEncryptor().encode(user.getPassword()));
-        user.setRole("USER");
-        user.setPosts(new ArrayList<String>());
-        System.out.println(user);
-        dbService.getUserRepository().save(user);
-        return "/index";
-    }
-
-
-    @PostMapping("/auth")
-    public String profilePage(@RequestParam("username") String username,
-                              @RequestParam("password") String password,
-                              HttpServletResponse response,
-                              Model model)
-    {
-        try
-        {
-            PasswordEncryptor passwordEncryptor = new PasswordEncryptor();
-            User user = dbService.getUserRepository().getUserByUsername(username);
-            String hashedPassword = passwordEncryptor.encode(password);
-            System.out.println(hashedPassword);
-            if (passwordEncryptor.comparePasswords(hashedPassword, user.getPassword()))
-            {
-                System.out.println("condition is evaluated to be true");
-                System.out.println("retrieving posts");
-                model.addAttribute(user);
-                Cookie cookie = new Cookie("userid", user.getId());
-                response.addCookie(cookie);
-                return "profile";
-            }
-            else
-            {
-                System.out.println("evaluated as wrong");
-                return "login";
-            }
-        }
-        catch (Exception e)
-        {
-            return "error";
-        }
     }
 
     @GetMapping("/addPost")
@@ -147,6 +99,75 @@ public class HomeController
         return "new-playlist-form";
     }
 
+    @GetMapping("/forums/{postId}")
+    public String postPage(@PathVariable String postId,
+                           Model model)
+    {
+        System.out.println("works");
+        Post post = dbService.getPostRepository().getPostById(postId);
+        String username = dbService.getUserRepository().getUserById(post.getUser()).getUsername();
+        System.out.println(post);
+        System.out.println(username);
+        model.addAttribute("username",username);
+        model.addAttribute("post",post);
+        return "post";
+    }
+
+    //POST MAPPINGS
+    @PostMapping("/createAccount")
+    public String newAccount(@ModelAttribute("user") User user)
+    {
+        if(user == null)
+        {
+            return "error";
+        }
+        System.out.println(user);
+        String password = user.getPassword();
+        System.out.println(password);
+        user.setPassword(new PasswordEncryptor().encode(user.getPassword()));
+        user.setRole("USER");
+        user.setPosts(new ArrayList<String>());
+        System.out.println(user);
+        dbService.getUserRepository().save(user);
+        return "redirect:index";
+    }
+
+
+    @PostMapping("/auth")
+    public String profilePage(@RequestParam("username") String username,
+                              @RequestParam("password") String password,
+                              HttpServletResponse response,
+                              Model model)
+    {
+        try
+        {
+            PasswordEncryptor passwordEncryptor = new PasswordEncryptor();
+            User user = dbService.getUserRepository().getUserByUsername(username);
+            String hashedPassword = passwordEncryptor.encode(password);
+            System.out.println(hashedPassword);
+            if (passwordEncryptor.comparePasswords(hashedPassword, user.getPassword()))
+            {
+//                List<Post> posts = dbService.getPostRepository().getPostsByUser(user.getId());
+                model.addAttribute(user);
+//                model.addAttribute(posts);
+                Cookie cookie = new Cookie("userid", user.getId());
+                response.addCookie(cookie);
+                return "redirect:profile";
+            }
+            else
+            {
+                System.out.println("evaluated as wrong");
+                return "redirect:login";
+            }
+        }
+        catch (Exception e)
+        {
+            return "error";
+        }
+    }
+
+
+
     @PostMapping("/addPost")
     public String addNewPost(@ModelAttribute("post") Post post,
                              @CookieValue(value = "userid") String userid,
@@ -164,8 +185,12 @@ public class HomeController
         post.setVote(vote.getId());
         post.setUser(userid);
         dbService.getPostRepository().save(post);
-        System.out.println(post);
-        return "forums";
+
+        User user = dbService.getUserRepository().getUserById(userid);
+        user.getPosts().add(post.getId());
+        dbService.getUserRepository().save(user);
+//        System.out.println(post);
+        return "redirect:forums";
     }
 
     @PostMapping("/addLink")
@@ -173,7 +198,7 @@ public class HomeController
                              Model model)
     {
         dbService.getLinkRepository().save(link);
-        return "links";
+        return "redirect:links";
     }
 
     @PostMapping("/addPlaylist")
@@ -181,6 +206,7 @@ public class HomeController
                                  Model model)
     {
         dbService.getPlaylistRepository().save(playlist);
-        return "playlists";
+        return "redirect:playlists";
     }
 }
+    
